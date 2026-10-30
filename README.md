@@ -43,9 +43,19 @@ the unitless knobs to DSP quantities are fitted against soothe3 renders (`tools/
 
 ## Build
 
+### Windows
+
 ```powershell
 .\build.ps1                     # Release; VS 2026 Build Tools, fetches JUCE on first run
 .\build.ps1 -Target rsui        # one target
+```
+
+### Linux / macOS (Nix)
+
+```bash
+nix-shell
+./build.sh                     # Release build into build/release/
+./build.sh --target rsui       # one target
 ```
 
 The plugin is copied to `%USERPROFILE%\VST3-dev\resonance-suppressor.vst3`.

@@ -5,3 +5,5 @@ renders/
 __pycache__/
 *.user
 .vs/
+.direnv/
+result
