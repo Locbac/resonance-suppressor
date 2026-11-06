@@ -53,12 +53,17 @@ the unitless knobs to DSP quantities are fitted against soothe3 renders (`tools/
 ### Linux / macOS (Nix)
 
 ```bash
-nix-shell
-./build.sh                     # Release build into build/release/
+nix-shell                      # or `direnv allow` once, via the bundled .envrc
+./build.sh                     # Release build into build/Release/
+./build.sh --debug             # Debug build into build/Debug/
 ./build.sh --target rsui       # one target
 ```
 
-The plugin is copied to `%USERPROFILE%\VST3-dev\resonance-suppressor.vst3`.
+`build.sh` leaves the plugin at `build/Release/resonance-suppressor.vst3` (ad-hoc signed on macOS);
+copy or symlink it into `~/.vst3` (Linux) or `~/Library/Audio/Plug-Ins/VST3` (macOS) for your host to find it.
+A plain `cmake` build without `build.sh` copies it to that standard folder directly.
+
+On Windows the plugin is copied to `%USERPROFILE%\VST3-dev\resonance-suppressor.vst3`.
 In FL Studio add that folder once under *Options → Manage plugins → Plugin search paths*, then rescan.
 FL locks the `.vst3` while it is loaded, so remove the plugin (or close the project) before rebuilding.
 
